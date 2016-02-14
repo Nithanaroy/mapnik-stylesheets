@@ -189,8 +189,7 @@ def render_tiles(bbox, mapfile, tile_dir, minZoom=1,maxZoom=18, name="unknown", 
         renderers[i].join()
 
 
-
-if __name__ == "__main__":
+def main():
     home = os.environ['HOME']
     try:
         mapfile = os.environ['MAPNIK_MAP_FILE']
@@ -208,10 +207,16 @@ if __name__ == "__main__":
     #
     # Change the following for different bounding boxes and zoom levels
     #
+    
+    minZoom = 0
+    maxZoom = 14
+    bbox = (-121, 34, -71, 6)
+    render_tiles(bbox, mapfile, tile_dir, minZoom, maxZoom, "Mexico")
+
+    return
     # Start with an overview
     # World
     bbox = (-180.0,-90.0, 180.0,90.0)
-
     render_tiles(bbox, mapfile, tile_dir, 0, 5, "World")
 
     minZoom = 10
@@ -254,3 +259,7 @@ if __name__ == "__main__":
     # Europe+
     bbox = (1.0,10.0, 20.6,50.0)
     render_tiles(bbox, mapfile, tile_dir, 1, 11 , "Europe+")
+
+
+if __name__ == "__main__":
+    main()
